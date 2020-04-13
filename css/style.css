@@ -1,0 +1,117 @@
+a {
+    text-decoration: none;
+}
+body {
+    background-color: #fff;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+div {
+    display: block;
+}
+fieldset {
+    border-style: none;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-block-end: 0.625em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    min-inline-size: min-content;
+}
+form {
+    display: block;
+}
+html {
+    display: block;
+    height: 100%;
+}
+legend {
+    border-style: none;
+}
+h1 {
+    display: block;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+#header {
+    position: relative;
+    box-sizing: border-box;
+    height: 30%;
+    padding: 46px 0 0;
+}
+#header .h_logo {
+    display: block;
+    width: 130px;
+    height: 25px;
+    margin: 0 auto;
+    color: transparent;
+
+}
+#header .h_logo #h_logo_img {
+    display: block;
+    width: 130px;
+    height: 60px;
+    margin: 0 auto;
+    color: transparent;
+}
+
+#container { 
+    margin:0 10px;
+    padding-bottom: 31px;
+}
+#container, #header {
+    margin: 0 10px;
+}
+#btn_login, #btn_join {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1em;
+    width: 100%;
+    height: 3em;
+    margin: 16px 0 7px;
+    text-align: center;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    background-color: #03aac7;
+}
+
+.blind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+.find_info {
+    font-size: 12px;
+    padding-top: 6px;
+    text-align: center;
+    color: #8e8e8e;
+    border-top: 1px solid #e4e4e5;
+}
+.input_row {
+    position: relative;
+    height: 29px;
+    overflow: hidden;
+    margin: 0 0 8px;
+    padding: 5px 39px 5px 11px;
+    border: solid 1px #dadada;
+    background: #fff;
+}
+.int {
+    line-height: 16px;
+    padding: 7px 0 6px;
+    width: 100%;
+    height: 16px;
+    border: none;
+    background: #fff;
+}

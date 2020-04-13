@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FishBook : 로그인</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="header">
+        <h1>
+            <a href="#" class="h_logo">
+                <img src="images/fish-4925732.png" id="h_logo_img" alt="logo">
+            </a>
+        </h1>
+    </div>
+    <div id="container">
+        <div id="content">
+            <form>
+                <fieldset class="login_form">
+                    <legend class="blind">로그인</legend>
+                    <div class="input_row" id="id_area">
+                        <span class="input_box">
+                            <label for="id" id="label_id_area"></label>
+                            <input type="text" id="id" name="id" class="int" placeholder="아이디" autofocus>
+                        </span>
+                        <!-- 취소 버튼-->
+                    </div>
+                    <div class="input_row" id="pw_area">
+                        <span class="input_box">
+                            <label for="pw" id="label_pw_area"></label>
+                            <input type="text" id="pw" name="pw" class="int" placeholder="비밀번호">
+                        </span>
+                        <!-- 취소 버튼-->
+                    </div>
+                    <input type="submit" title="로그인" id="btn_login" alt="로그인" value="로그인">
+                </fieldset>
+            </form>
+            <div class="find_info">
+                <a>아이디, 비밀번호 찾기</a>
+                <a>회원가입</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
