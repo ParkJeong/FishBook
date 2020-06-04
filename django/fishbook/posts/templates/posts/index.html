@@ -1,17 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <title>Fish Book</title>
-  <script src="js/jquery.js"></script>
-  <script src="js/classie.js"></script>
-  <script src="js/index.js"></script>
+  <script src="{% static 'js/classie.js' %}"></script>
+  <script src="{% static 'js/index.js' %}"></script>
 </head>
 <body>
   <header>
-    <a href="index.html"><img id="logo" src="image/fish-logo.png"></a>
+    <a href='{% url "index" %}'><img id="logo" src="{% static 'image/fish-logo.png' %}" alt="logo-image"></a>
     <button id="show-menu">메뉴</button>
     <button id="login" type="submit">로그인 상태</button>
     <input id="search" type="search">
@@ -21,7 +21,7 @@
       <h3>Menu</h3>
     </div>
     <a href="#">어종 인식</a>
-    <a href="go-fishing.html">낚시가는길</a>
+    <a href='{% url "goFishing" %}'>낚시가는길</a>
     <a href="#">낚시정보</a>
     <a href="#">낚시터</a>
     <a href="#">낚시용품</a>
