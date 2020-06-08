@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import index, goFishing, join, login
+from posts.views import index, goFishing, join, login, adminIndex
 
 
 urlpatterns = [
@@ -24,4 +24,5 @@ urlpatterns = [
     path('join/', join, name="join"),
     path('login/', login, name="login"),
     path('go-fishing/',goFishing, name="goFishing"),
+    path('admin-index/', admin-index, name="adminIndex");
 ]

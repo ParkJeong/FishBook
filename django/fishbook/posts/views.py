@@ -12,4 +12,7 @@ def join(request):
 def login(request):
     return render(request, 'posts/login.html')
 
+def adminIndex(request):
+    return render(request, 'posts/admin-index.html')
+
 # Create your views here.
