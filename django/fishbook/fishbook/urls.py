@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import index, goFishing, join, login, adminIndex
-
+from posts.views import index, goFishing, join, login
+from admins.views import adminIndex, adminLogin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
     path('join/', join, name="join"),
     path('login/', login, name="login"),
-    path('go-fishing/',goFishing, name="goFishing"),
-    path('admin-index/', admin-index, name="adminIndex");
+    path('goFishing/',goFishing, name="goFishing"),
+    path('adminIndex/', adminIndex, name="adminIndex"),
+    path('adminLogin/', adminLogin, name="adminLogin"),
 ]

@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/admin-index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/admin_index.css' %}">
   <title>Fish Book - 관리자 홈페이지</title>
-  <script src="js/jquery.js"></script>
-  <script src="js/classie.js"></script>
-  <script src="js/index.js"></script>
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/classie.js' %}"></script>
+  <script src="{% static 'js/index.js' %}"></script>
 </head>
 <body>
   <header>
-    <a href="{% url 'admin-index' %}"><img id="logo" src="{% static 'image/fish-logo.png' %}"></a>
+    <a href="{% url 'adminIndex' %}"><img id="logo" src="{% static 'image/fish-logo.png' %}"></a>
     <button id="show-menu">메뉴</button>
     <button id="login" type="submit">로그아웃</button>
     <input id="search" type="search">
