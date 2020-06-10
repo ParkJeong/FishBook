@@ -12,4 +12,6 @@ def join(request):
 def login(request):
     return render(request, 'posts/login.html')
 
+def new(request):
+    return render(request, 'posts/new.html')
 # Create your views here.
