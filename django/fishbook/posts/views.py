@@ -1,11 +1,18 @@
 from django.shortcuts import render, redirect
 from .forms import PostForm
+from .models import Post
 
 def index(request):
-    return render(request, 'posts/index.html')
+    context = {
+        'posts': Post.objects.order_by('-created_at')
+    }
+    return render(request, 'posts/index.html', context)
 
 def goFishing(request):
-    return render(request, 'posts/goFishing.html')
+    context = {
+        'posts': Post.objects.order_by('-created_at')
+    }
+    return render(request, 'posts/goFishing.html', context)
 
 def join(request):
     return render(request, 'posts/join.html')
@@ -26,3 +33,10 @@ def create(request):
             form.save()
     return redirect(goFishing)    
 # Create your views here.
+
+def show(request, post_id):
+    post = Post.objects.get(pk=post_id)
+    context = {
+        'post': post
+    }
+    return render(request, 'posts/show.html', context)

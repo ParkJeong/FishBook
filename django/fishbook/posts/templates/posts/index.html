@@ -48,13 +48,11 @@
     </article>
     <article id="newest-post">
       최신글5개
-      <pre>
-        1. 글1
-        2. 글2
-        3. 글3
-        4. 글4
-        5. 글5
-      </pre>
+      {% for post in posts %}
+      {% if forloop.counter <= 5 %}
+      <a href="{% url 'posts:show' post.id %}"><pre>{{ forloop.counter }}.{{post.title}}</pre></a>
+      {% endif %}
+      {% endfor %}
     </article>
     <article id="board">
       자유게시판

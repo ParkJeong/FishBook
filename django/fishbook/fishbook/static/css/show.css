@@ -1,9 +1,11 @@
 * {
-	box-sizing: border-box;	
+  box-sizing: border-box;
 }
+
 a {
 	text-decoration: none;
 }
+
 
 header {
 	height: 100px;
@@ -27,13 +29,26 @@ header img#logo {
   overflow: hidden;
   
 }
+
 #search, #login {
   float: right;
   margin: 10px;
 }
 
+#block {
+  display: block;
+}
+#left-side, #right-side , section{
+  display: inline-block;
+}
 
+#left-side{
+  width: 25%;
+}
 
+#right-side{
+  width: 25%;
+}
 /* 메뉴를 위한 */
 
 /* 메뉴바 전체 */
@@ -67,7 +82,8 @@ header img#logo {
 	display: block;
 	color: #fff;
 	font-size: 1.1em;
-	font-weight: 300;
+  font-weight: 300;
+  
 
 	border-bottom: 1px solid #258ecd;
 	padding: 1em;

@@ -5,37 +5,15 @@
  <link rel="stylesheet" href="{% static 'css/go_fishing.css' %}">
 </head>
   <section>
-    <article id="traffic-info">
-      교통정보
-      <pre>
-        현재 위치: 경기도 수원시 영통구
-        목적지: 속초
-        예상 시간: 4시간
-      </pre>
-    </article>
-    <article id="weather-info">
-      날씨정보
-      <pre>
-        현재 위치: 15도 맑음
-        목적지: 20도 흐림
-      </pre>
-    </article>
-    <article id="rainfall-info">
-      강수량정보
-      <pre>
-        목적지: 0mm
-      </pre>
-    </article>
     <article id="fish-inquiry-board">
       조황문의
-      <pre>
-        1. 글1
-        2. 글2
-        3. 글3
-        4. 글4
-        5. 글5
-      </pre>
+      {% for post in posts %}
+      {% if forloop.counter <= 5 %}
+      <a href="{% url 'posts:show' post.id %}"><pre>{{ forloop.counter }}.{{post.title}}</pre></a>
+      {% endif %}
+      {% endfor %}
     </article>
+    <a href='{% url "posts:new" %}'>글쓰기</a>
   </section>
 
 {% endblock %}
