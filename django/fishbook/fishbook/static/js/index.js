@@ -12,4 +12,8 @@ window.onload = function(){
     classie.toggle(this, 'active');
     classie.toggle(menu, 'menu-open');
   });
+
+  $('#exampleModal').on('shown.bs.modal', function () {
+    $('#delete-btn').trigger('focus')
+  })
 };
