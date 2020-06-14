@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>MAP test</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="JH PARK" />
+
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <section id="top_info">
+            <div class="row" style="display:flex;">
+                <div class="col-4">
+                    <div id="map" style="width:100%;height:400px;"></div>
+                    <p>
+                    현재위치 :<span id="currentAddress"></span><br>
+                    <input type="text" id="txtDest" placeholder="도착지를 입력해주세요 (예) 속초시 청호동"/>
+                    <button id="btnSearchLocation">검색</button>
+                    <p id="distance" style="display:none;">
+                        거리 : <span id="spanDistance"></span>
+                    </p>
+                    </p>
+                </div>
+                <div class="col-4">
+                    <div id="weather">
+
+                        <p style="text-align: center;">
+                            <h3 id="currentWeatherText"></h3><br>
+                            <img id="currentWeatherIMG" src=""><br>
+                            <h3 id="currentrain"></h3>
+                        </p><br>
+                        <p style="text-align: center;">
+                            <h2 id="destWeatherText"></h2><br>
+                            <img id="destWeatherIMG" src=""><br>
+                            <h3 id="destrain"></h3>
+                        </p>
+            
+            
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        
+        
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fab009a953c8ae6de051d78376713562&libraries=services,clusterer"></script>
+
+        <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script>
+
+            // 구면 코사인 법칙(Spherical Law of Cosine) 으로 두 위도/경도 지점의 거리를 구함
+            // 반환 거리 단위 (km)
+            function computeDistance(startCoords, destCoords) {
+                var startLatRads = degreesToRadians(startCoords.latitude);
+                var startLongRads = degreesToRadians(startCoords.longitude);
+                var destLatRads = degreesToRadians(destCoords.latitude);
+                var destLongRads = degreesToRadians(destCoords.longitude);
+
+                var Radius = 6371; //지구의 반경(km)
+                var distance = Math.acos(Math.sin(startLatRads) * Math.sin(destLatRads) + 
+                                Math.cos(startLatRads) * Math.cos(destLatRads) *
+                                Math.cos(startLongRads - destLongRads)) * Radius;
+
+                return distance;
+            }
+
+            function degreesToRadians(degrees) {
+                radians = (degrees * Math.PI)/180;
+                return radians;
+            }
+
+            var mapObj = new Object();
+
+            $("#btnSearchLocation").click(function(){
+
+                mapObj.callback_address = function(result, status) {
+                            if (status === kakao.maps.services.Status.OK) {
+                                
+                                var destCoords = new Object();
+                                destCoords.latitude = result[0].y
+                                destCoords.longitude = result[0].x
+                                var srcCoodrs = new Object();
+                                srcCoodrs.latitude = mapObj.latitude;
+                                srcCoodrs.longitude = mapObj.longitude;
+                                var temp =computeDistance(srcCoodrs, destCoords) 
+                                
+                                $("#distance").show();
+                                $("#spanDistance").html(Math.round(temp)+ "Km")
+                                drawMap(result[0].y,result[0].x,false)
+                                mapObj.dest_latitude = result[0].y;
+                                mapObj.dest_longitude = result[0].x;
+                                drawWeather(mapObj.dest_latitude,mapObj.dest_longitude,false);
+
+                            }
+                        };
+
+                mapObj.geocoder.addressSearch($("#txtDest").val().trim(), mapObj.callback_address);
+            });
+
+               
+   
+            function drawMap(latitude, longitude, isCurrentPosition)
+            {
+                 
+                        mapObj.latitude=  latitude;
+                        mapObj.longitude= longitude;
+                        
+                        
+                        mapObj.container = document.getElementById('map');
+                        mapObj.options = {
+                            center: new kakao.maps.LatLng(mapObj.latitude, mapObj.longitude),
+                            level: 3
+                        };
+                
+                        mapObj.map = new kakao.maps.Map(mapObj.container, mapObj.options);
+                        mapObj.geocoder = new kakao.maps.services.Geocoder();
+
+                        // GPS 정보 => 주소 변환
+
+                        mapObj.coord = new kakao.maps.LatLng(mapObj.latitude, mapObj.longitude);
+                        mapObj.callback = function(result, status) {
+                            if (status === kakao.maps.services.Status.OK) {                                
+                                console.log(result);
+                                if (isCurrentPosition)
+                                    $("#currentAddress").html(result[0].road_address.address_name);
+                            }
+                        };
+                        mapObj.geocoder.coord2Address(mapObj.coord.getLng(), mapObj.coord.getLat(), mapObj.callback);
+
+                        //위치 마커 표시
+
+                        mapObj.clusterer = new kakao.maps.MarkerClusterer({
+                            map: mapObj.map,
+                            //markers: markers,
+                            gridSize: 35,
+                            averageCenter: true,
+                            minLevel: 6,
+                            disableClickZoom: true,
+                            styles: [{
+                                width : '53px', height : '52px',
+                                background: 'url(cluster.png) no-repeat',
+                                color: '#fff',
+                                textAlign: 'center',
+                                lineHeight: '54px'
+                            }]
+                        });
+
+                        mapObj.marker = new kakao.maps.Marker({
+                            position: new kakao.maps.LatLng( mapObj.latitude, mapObj.longitude )
+                        });
+
+                        mapObj.clusterer.addMarker(mapObj.marker);
+
+                        
+
+
+            }
+
+            function drawWeather(latitude,longitude,isCurrentPosition)
+            {
+                var weather_url = "https://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&appid=eef2ceca8e820c9af83fc74bbd1390c9&units=metric&lang=kr"
+                $.ajax({
+                    url: weather_url
+                    ,method : "GET"                   
+                    ,success :function(data)
+                    {
+                        console.log(data);
+                        //console.log("http://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png")
+                        if (isCurrentPosition)
+                            targetPos="current"
+                        else
+                            targetPos="dest"
+                        $("#"+targetPos+"WeatherIMG").attr("src", "http://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png");
+                        
+                        weatherText ="기타"
+                        if (data.weather[0].id >=200 && data.weather[0].id <300)
+                            weatherText ="폭우"
+                        if (data.weather[0].id >=300 && data.weather[0].id <600)
+                            weatherText ="비"
+                        if (data.weather[0].id >=600 && data.weather[0].id <700)
+                            weatherText ="눈"
+                        if (data.weather[0].id ==800)
+                            weatherText ="맑음"
+                        if (data.weather[0].id > 800)
+                            weatherText ="흐림"
+
+
+                        $("#"+targetPos+"WeatherText").html(weatherText+" "+data.main.temp +"°C" );
+                        if ("rain" in data )
+                            $("#"+targetPos+"rain").html(data.main.temp +"mm" );
+                    }
+
+                    
+                });
+                
+
+            }
+
+            $("document").ready(function(){
+                var param = new Object();
+                mapObj.bGPSSupport = false;
+
+                if (navigator.geolocation) { // GPS를 지원하면
+                    mapObj.bGPSSupport = true;
+                    navigator.geolocation.getCurrentPosition(function(position) {                
+                    mapObj.latitude=  position.coords.latitude;
+                    mapObj.longitude= position.coords.longitude;
+                    drawMap(mapObj.latitude,mapObj.longitude,true);
+                    drawWeather(mapObj.latitude,mapObj.longitude,true);
+                    });
+                
+                    
+                }
+                else
+                    mapObj.bGPSSupport = false;
+
+
+
+
+                if (navigator.geolocation) { // GPS를 지원하면
+                    mapObj.bGPSSupport = true;
+
+                    
+                } else {
+                    alert('GPS를 지원하지 않습니다');
+                }
+                
+
+                });
+
+            
+            
+            
+
+        </script>
+    </body>
+</html>

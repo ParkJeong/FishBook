@@ -6,7 +6,7 @@ def index(request):
     context = {
         'posts': Post.objects.order_by('-updated_at')
     }
-    return render(request, 'posts/index.html', context)
+    return render(request, 'posts/index2.html', context)
 
 def goFishing(request):
     context = {

@@ -1,0 +1,428 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>MAP test</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="JH PARK" />
+
+        <link rel="shortcut icon" href="">
+		
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+    </head>
+	
+	<body class="is-preload homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<header id="header" class="container">
+
+						<!-- Logo -->
+							<div id="logo">
+								<a href="#"><img src="{% static 'images/fish-logo.png' %}" %} style="height: 66px;"></a>
+								
+							</div>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li class="current"><a href="#">Home</a></li>
+									
+									<li><a href="#">낚시가는길</a></li>
+									
+								</ul>
+							</nav>
+
+					</header>
+				</div>
+
+			<!-- Banner -->
+			<!--
+				<div id="banner-wrapper">
+					<div id="banner" class="box container">
+						<div class="row">
+							<div class="col-7 col-12-medium">
+								<h2>Fish Book</h2>
+								<p> 낚시 관련 모든 정보를 제공합니다.</p>
+							</div>
+							<div class="col-5 col-12-medium">
+								<ul>
+									<li><a href="#transport" class="button large icon solid fa-arrow-circle-right">Transport</a></li>
+									<li><a href="#weather" class="button alt large icon solid fa-arrow-circle-right">Weather</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+-->
+			<!-- Features -->
+				<div id="features-wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="col-6 col-12-medium">
+
+								<!-- Box -->
+									<section class="box feature" id="transport">
+										<a href="#" class="image featured"><img id="fakeMapImg" src="{% static 'images/pic01.jpg' %}" alt="" /></a>
+										<div id="map" style="width:100%;height:400px;display:none;"></div>
+										<div class="inner">
+											<header>
+												<h2>위치 정보</h2>												
+											</header>
+											<p>
+												현재위치 :<span id="currentAddress"></span><br>
+												<label for="txtDest"> 목적지 : </label>
+												<input type="text" id="txtDest" style="width:90%;" placeholder="도착지를 입력해주세요 (예) 속초시 청호동"/>
+												<button class="btn btn-primary" id="btnSearchLocation">검색</button>
+												<p id="distance" style="display:none;">
+													목적지까지의 거리 : <span id="spanDistance" style="font-weight: bold;"></span>
+												</p>
+												</p>
+										</div>
+									</section>
+
+							</div>
+							<div class="col-6 col-12-medium">
+
+								<!-- Box -->
+									<section class="box feature" id="weather">
+										
+										<div class="inner">
+											<header>
+												<h2>날씨 정보</h2>
+												
+											</header>
+											<div id="weather">
+												<div class="row">
+													<div class="col-6" style="text-align:center;">
+														현재위치 <br><br>
+														<h3 id="currentWeatherText"></h3><br>
+														<img id="currentWeatherIMG" src=""><br>
+														<h3 id="currentrain"></h3>
+
+													</div>
+													<div class="col-6" style="text-align:center;">
+														목적지 <br><br>
+														<h2 id="destWeatherText"></h2><br>
+														<img id="destWeatherIMG" src=""><br>
+														<h3 id="destrain"></h3>
+													</div>
+												</div>
+												
+													
+									
+									
+											</div>
+										</div>
+									</section>
+
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="container">
+
+					<div class="row">
+						<div class="col-12">
+							<H3>Fishes</H3>
+						</div>
+					</div>
+				</div>
+			<!-- Main -->
+				<div id="banner-wrapper">
+					<div class="container">
+						<div class="row">
+							<div class="col-4 col-12-medium">
+
+								<!-- Box -->
+									<section class="box feature" id="transport">
+										<a href="#" class="image featured"><img src="{% static 'images/임연수어.png' %}" alt="" /></a>										
+										<div class="inner">
+											<header>
+												<h2>임연수어</h2>												
+											</header>
+											<P>임연수어는 어떤 어종으로써 어쩌저쩌</P>
+										</div>
+									</section>
+
+							</div>
+							<div class="col-4 col-12-medium">
+
+								<!-- Box -->
+									<section class="box feature" id="weather">
+										<a href="#" class="image featured"><img src="{% static 'images/용가자미.jpg' %}" alt="" /></a>
+										<div class="inner">
+											<header>
+												<h2>용가자미</h2>												
+											</header>
+											<p>용가자미는 일명 어쩌고라고 부르며 어쩌저쩌...</p>
+										</div>
+									</section>
+
+							</div>
+							<div class="col-4 col-12-medium">
+
+								<!-- Box -->
+									<section class="box feature" id="weather">
+										<a href="#" class="image featured"><img src="{% static 'images/황어.jpg' %}" alt="" /></a>
+										<div class="inner">
+											<header>
+												<h2>황어</h2>												
+											</header>
+											<p>황어는 잡어로..</p>
+											
+										</div>
+									</section>
+
+							</div>
+							
+						</div>
+						<div class="row">
+							<div class="col-12" style="text-align:center;">
+								<button>More..</button>
+							</div>	
+						</div>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<footer id="footer" class="container">
+						<div class="row">
+							
+							<div class="col-12 col-12-medium col-12-small" >
+
+								<!-- Contact -->
+									<section class="widget contact last" style="text-align: center;">
+										<h3>Contact Us</h3>
+										<ul>
+											<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>											
+											
+										</ul>
+										<p>경기도 용인시 기흥구 영덕동 덕영대로 1732<br />										
+										010-xxxx-yyyy</p>
+									</section>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div id="copyright">
+									<ul class="menu">
+										<li>&copy;  All rights reserved</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+			
+        	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ae75e773f5e261bc9bb0d38c630165d8&libraries=services,clusterer"></script>
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.dropotron.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+			<script>
+
+				// 구면 코사인 법칙(Spherical Law of Cosine) 으로 두 위도/경도 지점의 거리를 구함
+				// 반환 거리 단위 (km)
+				function computeDistance(startCoords, destCoords) {
+					var startLatRads = degreesToRadians(startCoords.latitude);
+					var startLongRads = degreesToRadians(startCoords.longitude);
+					var destLatRads = degreesToRadians(destCoords.latitude);
+					var destLongRads = degreesToRadians(destCoords.longitude);
+	
+					var Radius = 6371; //지구의 반경(km)
+					var distance = Math.acos(Math.sin(startLatRads) * Math.sin(destLatRads) + 
+									Math.cos(startLatRads) * Math.cos(destLatRads) *
+									Math.cos(startLongRads - destLongRads)) * Radius;
+	
+					return distance;
+				}
+	
+				function degreesToRadians(degrees) {
+					radians = (degrees * Math.PI)/180;
+					return radians;
+				}
+	
+				var mapObj = new Object();
+	
+				$("#btnSearchLocation").click(function(){
+	
+					mapObj.callback_address = function(result, status) {
+								if (status === kakao.maps.services.Status.OK) {
+									
+									var destCoords = new Object();
+									destCoords.latitude = result[0].y
+									destCoords.longitude = result[0].x
+									var srcCoodrs = new Object();
+									srcCoodrs.latitude = mapObj.latitude;
+									srcCoodrs.longitude = mapObj.longitude;
+									var temp =computeDistance(srcCoodrs, destCoords) 
+									
+									$("#distance").show();
+									$("#spanDistance").html(Math.round(temp)+ "Km")
+									drawMap(result[0].y,result[0].x,false)
+									mapObj.dest_latitude = result[0].y;
+									mapObj.dest_longitude = result[0].x;
+									drawWeather(mapObj.dest_latitude,mapObj.dest_longitude,false);
+	
+								}
+							};
+	
+					mapObj.geocoder.addressSearch($("#txtDest").val().trim(), mapObj.callback_address);
+				});
+	
+				   
+	   
+				function drawMap(latitude, longitude, isCurrentPosition)
+				{
+							$("#fakeMapImg").show();
+							$("#map").hide();
+							mapHeight = $("#fakeMapImg").height();
+							console.log(mapHeight);
+							$("#map").css("height",mapHeight+"px");
+							$("#map").show();
+							$("#fakeMapImg").hide();
+
+							mapObj.latitude=  latitude;
+							mapObj.longitude= longitude;
+							
+							
+							mapObj.container = document.getElementById('map');
+							mapObj.options = {
+								center: new kakao.maps.LatLng(mapObj.latitude, mapObj.longitude),
+								level: 3
+							};
+					
+							mapObj.map = new kakao.maps.Map(mapObj.container, mapObj.options);
+							mapObj.geocoder = new kakao.maps.services.Geocoder();
+	
+							// GPS 정보 => 주소 변환
+	
+							mapObj.coord = new kakao.maps.LatLng(mapObj.latitude, mapObj.longitude);
+							mapObj.callback = function(result, status) {
+								if (status === kakao.maps.services.Status.OK) {                                
+									console.log(result);
+									if (isCurrentPosition)
+										$("#currentAddress").html(result[0].road_address.address_name);
+								}
+							};
+							mapObj.geocoder.coord2Address(mapObj.coord.getLng(), mapObj.coord.getLat(), mapObj.callback);
+	
+							//위치 마커 표시
+	
+							mapObj.clusterer = new kakao.maps.MarkerClusterer({
+								map: mapObj.map,
+								//markers: markers,
+								gridSize: 35,
+								averageCenter: true,
+								minLevel: 6,
+								disableClickZoom: true,
+								styles: [{
+									width : '53px', height : '52px',
+									background: 'url(cluster.png) no-repeat',
+									color: '#fff',
+									textAlign: 'center',
+									lineHeight: '54px'
+								}]
+							});
+	
+							mapObj.marker = new kakao.maps.Marker({
+								position: new kakao.maps.LatLng( mapObj.latitude, mapObj.longitude )
+							});
+	
+							mapObj.clusterer.addMarker(mapObj.marker);
+	
+							
+	
+	
+				}
+	
+				function drawWeather(latitude,longitude,isCurrentPosition)
+				{
+					var weather_url = "https://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&appid=eef2ceca8e820c9af83fc74bbd1390c9&units=metric&lang=kr"
+					$.ajax({
+						url: weather_url
+						,method : "GET"                   
+						,success :function(data)
+						{
+							console.log(data);
+							//console.log("http://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png")
+							if (isCurrentPosition)
+								targetPos="current"
+							else
+								targetPos="dest"
+							$("#"+targetPos+"WeatherIMG").attr("src", "http://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png");
+							
+							weatherText ="기타"
+							if (data.weather[0].id >=200 && data.weather[0].id <300)
+								weatherText ="폭우"
+							if (data.weather[0].id >=300 && data.weather[0].id <600)
+								weatherText ="비"
+							if (data.weather[0].id >=600 && data.weather[0].id <700)
+								weatherText ="눈"
+							if (data.weather[0].id ==800)
+								weatherText ="맑음"
+							if (data.weather[0].id > 800)
+								weatherText ="흐림"
+	
+	
+							$("#"+targetPos+"WeatherText").html(weatherText+" "+data.main.temp +"°C" );
+							if ("rain" in data )
+								$("#"+targetPos+"rain").html(data.main.temp +"mm" );
+						}
+	
+						
+					});
+					
+	
+				}
+	
+				$("document").ready(function(){
+					var param = new Object();
+					mapObj.bGPSSupport = false;
+	
+					if (navigator.geolocation) { // GPS를 지원하면
+						mapObj.bGPSSupport = true;
+						navigator.geolocation.getCurrentPosition(function(position) {                
+						mapObj.latitude=  position.coords.latitude;
+						mapObj.longitude= position.coords.longitude;
+						drawMap(mapObj.latitude,mapObj.longitude,true);
+						drawWeather(mapObj.latitude,mapObj.longitude,true);
+						});
+					
+						
+					}
+					else
+						mapObj.bGPSSupport = false;
+	
+	
+	
+	
+					
+	
+					});
+	
+				
+				
+				
+	
+			</script>
+	</body>
+</html>
