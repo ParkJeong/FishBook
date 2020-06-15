@@ -14,7 +14,7 @@ PAGESIZE=10
 
 def list(request, page=1):
     kwd = request.GET.get('kwd')
-    if kwd == None or kwd is '' or kwd == 'null':
+    if kwd == None or kwd == '' or kwd == 'null':
         start = (page - 1) * PAGESIZE
         board_count = Board.objects.count()
         boardlist = Board.objects.all().order_by('-groupno', 'orderno')[start:start+PAGESIZE]
