@@ -67,7 +67,7 @@ def update(request):
     else:
         return HttpResponseRedirect('/users/updateform?result=fail')
 
-    if request.POST.get('new_pw') is not '':
+    if request.POST.get('new_pw') != '':
         user.userPw = request.POST.get('new_pw')
     user.save()
 
