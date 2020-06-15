@@ -4,16 +4,16 @@ from .models import Post
 class PostForm(forms.ModelForm):
   class Meta:
     model = Post
-    fields = ['title', 'content']
+    fields = ['species', 'description']
     labels = {
-      'title': '제목',
-      'content': '내용',
+      'species': '어종',
+      'description': '설명',
     }
     widget = {
-      'title': forms.TextInput(attrs={
+      'species': forms.TextInput(attrs={
         'class': 'form-control'
       }),
-      'content': forms.Textarea(attrs={
+      'description': forms.Textarea(attrs={
         'class': 'form-control'
       }),
     }

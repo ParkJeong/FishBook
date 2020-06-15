@@ -6,17 +6,12 @@ from .models import User
 class UserAdmin(admin.ModelAdmin):
     list_display = (
             'id',
-            'userId',
-            'userPw',
-            'name',
             'email',
-            'rrn',
-            'last_destination',
+            'userPw',
             'created_at',
             'updated_at',
     )
     search_fields = (
-            'userId',
-            'name',
+            'email',
     )
 # Register your models here.

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FishBook : 로그인</title>
+    <link rel="stylesheet" href="{% static 'assets/css/user_loginform.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'images/fish-logo.png' %}" alt="logo">
+                </a>
+            </h1>
+        </div>
+        <div id="container">
+            <div id="content">
+                <form id="login-form" name="loginform" method="POST" action="{% url 'users:login' %}">
+                  {% csrf_token %}
+                    <fieldset class="login_form">
+                        <legend class="blind">로그인</legend>
+                        <div class="input_row" id="email_area">
+                            <span class="input_box">
+                                <label for="email" id="label_userId_area"></label>
+                                <input type="text" id="email" name="email" class="int" placeholder="이메일" autofocus>
+                            </span>
+                            <!-- 취소 버튼-->
+                        </div>
+                        <div class="input_row" id="pw_area">
+                            <span class="input_box">
+                                <label for="pw" id="label_pw_area"></label>
+                                <input type="password" id="pw" name="pw" class="int" placeholder="비밀번호">
+                            </span>
+                            <!-- 취소 버튼-->
+                        </div>
+                        {% if request.GET.result == 'fail' %}
+                        <p style="color: red;">
+                          로그인이 실패했습니다.
+                        </p>
+                        {% endif %}
+                    </fieldset>
+                    <input type="submit" title="로그인" id="btn_login" alt="로그인" value="로그인">
+                </form>
+                <div class="find_info">
+                    <a href="#">아이디, 비밀번호 찾기</a>
+                    <a href="{% url 'users:joinform' %}">회원가입</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

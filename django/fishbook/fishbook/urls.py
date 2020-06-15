@@ -15,16 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from posts.views import index, goFishing, join, login
+from posts.views import index, fishes
 from admins.views import adminIndex, adminLogin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="index"),
-    path('join/', join, name="join"),
-    path('login/', login, name="login"),
-    path('goFishing/',goFishing, name="goFishing"),
+    path('fishes/',fishes, name="fishes"),
     path('adminIndex/', adminIndex, name="adminIndex"),
     path('adminLogin/', adminLogin, name="adminLogin"),
     path('posts/', include('posts.urls')),
+    path('users/', include('users.urls')),
+    path('board/', include('board.urls')),
 ]

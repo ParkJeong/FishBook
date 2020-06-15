@@ -1,0 +1,183 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>FishBook</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="JH PARK" />
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+  </head>
+
+  <body class="is-preload homepage">
+	  <div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<header id="header" class="container">
+
+						<!-- Logo -->
+							<div id="logo">
+								<a href="{% url 'index' %}"><img src="{% static 'images/fish-logo.png' %}" %} style="height: 66px;"></a>
+
+							</div>
+
+						<!-- Nav -->
+
+            {% include 'share/_navbar.html' %}
+
+					</header>
+				</div>
+
+			<!-- Banner -->
+			<!--
+				<div id="banner-wrapper">
+					<div id="banner" class="box container">
+						<div class="row">
+							<div class="col-7 col-12-medium">
+								<h2>Fish Book</h2>
+								<p> 낚시 관련 모든 정보를 제공합니다.</p>
+							</div>
+							<div class="col-5 col-12-medium">
+								<ul>
+									<li><a href="#transport" class="button large icon solid fa-arrow-circle-right">Transport</a></li>
+									<li><a href="#weather" class="button alt large icon solid fa-arrow-circle-right">Weather</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+-->
+			<!-- Features -->
+				<div class="container">
+
+					<div class="row">
+						<div class="col-12">
+							<H3>개인정보 수정</H3>
+						</div>
+					</div>
+				</div>
+			<!-- Main -->
+				<div id="banner-wrapper">
+					<div class="container">
+						<div class="row">
+
+							<div class="col-4 col-12-medium" style="margin: 0 auto;">
+                <form id="join_f" name="joinForm" method="POST" action="{% url 'users:update' %}">
+                  {% csrf_token %}
+                    <fieldset class="join_form">
+                        <legend class="blind">회원정보 수정</legend>
+                        <div class="input_row" id="email_area">
+                            <span class="input_box">
+                                <label for="email" id="label_email_area"></label>
+                                <input type="text" id="email" name="email" class="int" value="{{ user.email }}" readonly>
+                            </span>
+                            <!-- 취소 버튼(쓴 내용 삭제)-->
+                        </div>
+                        <div class="error_next_box" id="email_msg" style=""></div>
+                        <!-- <div class="input_row" id="id_area">
+                            <span class="input_box">
+                                <label for="userId" id="label_userId_area"></label>
+                                <input type="text" id="userId" name="userId" class="int" placeholder="아이디">
+                            </span>
+                        </div>
+                        <div class="error_next_box" id="id_msg" style=""></div> -->
+                        <div class="input_row" id="pw_area">
+                            <span class="input_box">
+                                <label for="pw" id="label_pw_area"></label>
+                                <input type="password" id="pw" name="pw" class="int" placeholder="현재 비밀번호">
+                            </span>
+                            <!-- 취소 버튼(쓴 내용 삭제)-->
+                        </div>
+                        <div class="error_next_box" id="pw_msg" style=""></div>
+
+                        <div class="input_row" id="new_pw_area">
+                            <span class="input_box">
+                                <label for="new_pw" id="label_new_pw_area"></label>
+                                <input type="password" id="new_pw" name="new_pw" class="int" placeholder="새 비밀번호">
+                            </span>
+                            <!-- 취소 버튼(쓴 내용 삭제)-->
+                        </div>
+                        <div class="error_next_box" id="new_pw_msg" style=""></div>
+
+                        <div class="input_row" id="new_pw_check_area">
+                            <span class="input_box">
+                                <label for="new_pw_check" id="label_new_pw_check_area"></label>
+                                <input type="password" id="new_pw_check" name="new_pw_check" class="int" placeholder="새 비밀번호 확인">
+                            </span>
+                            <!-- 취소 버튼(쓴 내용 삭제)-->
+                        </div>
+                        <div class="error_next_box" id="new_pw_check_msg" style=""></div>
+                    </fieldset>
+                    <input type="submit" title="수정하기" id="btn_join" pw_check_result="fail" new_pw_check_result="fail" new_pw_check_check_result="fail" alt="수정하기" value="수정하기">
+                </form>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<footer id="footer" class="container">
+						<div class="row">
+
+							<div class="col-12 col-12-medium col-12-small" >
+
+								<!-- Contact -->
+									<section class="widget contact last" style="text-align: center;">
+										<h3>Contact Us</h3>
+										<ul>
+											<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+
+										</ul>
+										<p>경기도 용인시 기흥구 영덕동 덕영대로 1732<br />
+										010-xxxx-yyyy</p>
+									</section>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div id="copyright">
+									<ul class="menu">
+										<li>&copy;  All rights reserved</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+
+      <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ae75e773f5e261bc9bb0d38c630165d8&libraries=services,clusterer"></script>
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.dropotron.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+      <script src="{% static 'assets/js/updateform.js' %}"></script>
+
+      {% if request.GET.result == 'success' %}
+      <script>
+        alert('정보 수정이 완료되었습니다.')
+      </script>
+      {% endif %}
+      {% if request.GET.result == 'fail' %}
+      <script>
+        alert('정보 수정에 실패했습니다.')
+      </script>
+      {% endif %}
+	</body>
+</html>

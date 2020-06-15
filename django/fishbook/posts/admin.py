@@ -6,12 +6,14 @@ from .models import Post
 class PostAdmin(admin.ModelAdmin):
     list_display = (
         'id',
-        'title',
+        'species',
+        'description',
+        'image',
         'view_count',
         'created_at',
         'updated_at'
     )
     search_fields = (
-        'title',
+        'species',
     )
 # Register your models here.
