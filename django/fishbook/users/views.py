@@ -17,6 +17,11 @@ def join(request):
     user.userPw = request.POST.get('pw')
     if user.email != None and user.userPw != None:
         user.save()
+
+    results = User.objects.filter(email=request.POST.get('email')).filter(userPw=request.POST.get('pw'))
+
+    authUser = results[0]
+    request.session['authUser'] = model_to_dict(authUser)
     return HttpResponseRedirect(reverse('users:joinsuccess'))
     # return render(request, 'users/join.html')
 

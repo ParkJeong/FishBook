@@ -76,7 +76,7 @@ def write(request, page=1):
         board.groupno = value.get('max_groupno') + 1
         board.save()
     else:
-        board2 = Board.objects.get(email=request.POST.get('no'))
+        board2 = Board.objects.get(id=request.POST.get('no'))
         Board.objects.filter(orderno__gte=board2.orderno+1).update(orderno=F('orderno')+1)
         board.groupno = board2.groupno
         board.orderno = board2.orderno + 1

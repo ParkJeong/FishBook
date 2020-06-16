@@ -6,7 +6,6 @@
     {% if request.session.authUser is None %}
     <li><a href="{% url 'users:loginform' %}">로그인</a></li>
     {% else %}
-    <!-- <li><a href="{% url 'posts:new' %}">글쓰기</a></li> -->
     <li><a href="{% url 'users:updateform' %}">{{ request.session.authUser.email }}</a></li>
     <li><a href="{% url 'users:logout' %}">로그아웃</a></li>
     {% endif %}
