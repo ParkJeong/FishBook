@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FishBook : 회원가입</title>
+  <link rel="stylesheet" href="{% static 'assets/css/user_joinform.css' %}">
+  <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/js/joinform.js' %}"></script>
+
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'images/fish-logo.png' %}" alt="logo">
+                </a>
+            </h1>
+        </div>
+        <div id="container">
+            <div id="content">
+                <form id="join_f" method="POST" action="{% url 'users:join' %}">
+                  {% csrf_token %}
+                    <fieldset class="join_form">
+                        <legend class="blind">회원가입</legend>
+                        <div class="input_row" id="email_area">
+                            <span class="input_box">
+                                <label for="email" id="label_email_area"></label>
+                                <input type="text" id="email" name="email" class="int" placeholder="이메일" autofocus>
+                            </span>
+                            <!-- 취소 버튼(쓴 내용 삭제)-->
+                        </div>
+                        <div class="error_next_box" id="email_msg" style=""></div>
+                        <!-- <div class="input_row" id="id_area">
+                            <span class="input_box">
+                                <label for="userId" id="label_userId_area"></label>
+                                <input type="text" id="userId" name="userId" class="int" placeholder="아이디">
+                            </span>
+                        </div> -->
+                        <div class="error_next_box" id="id_msg" style=""></div>
+                        <div class="input_row" id="pw_area">
+                            <span class="input_box">
+                                <label for="pw" id="label_pw_area"></label>
+                                <input type="password" id="pw" name="pw" class="int" placeholder="비밀번호">
+                            </span>
+                            <!-- 취소 버튼(쓴 내용 삭제)-->
+                        </div>
+                        <div class="error_next_box" id="pw_msg" style=""></div>
+                        <div class="input_row" id="pw_check_area">
+                            <span class="input_box">
+                                <label for="pw_check" id="label_pw_check_area"></label>
+                                <input type="password" id="pw_check" name="pw_check" class="int" placeholder="비밀번호 확인">
+                            </span>
+                            <!-- 취소 버튼(쓴 내용 삭제)-->
+                        </div>
+                        <div class="error_next_box" id="pw_check_msg" style=""></div>
+                    </fieldset>
+                    <input type="submit" title="회원가입" id="btn_join" email_check_result="fail" pw_check_result="fail" pw_check_check_result="fail" alt="가입하기" value="가입하기">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

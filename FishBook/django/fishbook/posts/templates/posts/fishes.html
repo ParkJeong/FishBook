@@ -1,0 +1,189 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>FishBook</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="JH PARK" />
+
+        <link rel="shortcut icon" href="">
+
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+    </head>
+
+	<body class="is-preload homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<header id="header" class="container">
+
+						<!-- Logo -->
+							<div id="logo">
+								<a href="{% url 'index' %}"><img src="{% static 'images/fish-logo.png' %}" %} style="height: 66px;"></a>
+
+							</div>
+
+						<!-- Nav -->
+							{% include 'share/_navbar.html' %}
+					</header>
+				</div>
+
+			<!-- Banner -->
+			<!--
+				<div id="banner-wrapper">
+					<div id="banner" class="box container">
+						<div class="row">
+							<div class="col-7 col-12-medium">
+								<h2>Fish Book</h2>
+								<p> 낚시 관련 모든 정보를 제공합니다.</p>
+							</div>
+							<div class="col-5 col-12-medium">
+								<ul>
+									<li><a href="#transport" class="button large icon solid fa-arrow-circle-right">Transport</a></li>
+									<li><a href="#weather" class="button alt large icon solid fa-arrow-circle-right">Weather</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+-->
+			<!-- Features -->
+				<div class="container">
+
+					<div class="row">
+						<div class="col-12">
+							<H3>Fishes</H3>
+						</div>
+					</div>
+				</div>
+			<!-- Main -->
+				<div id="banner-wrapper">
+					<div class="container">
+						<div class="row">
+              <div class="col-4 col-12-medium">
+
+                <!-- Box -->
+                  <section class="box feature" id="transport">
+                    <a href="#" class="image featured"><img src="{% static 'images/임연수어.png' %}" alt="" /></a>
+                    <div class="inner">
+                      <header>
+                        <h2>임연수어</h2>
+                      </header>
+                      <P>임연수어(林延壽魚)는 쥐노래미과에 속하며 학명은 Pleurogrammus azonus이다. 몸길이 45cm 가량으로 모양이 쥐노래미와 비슷하나 꼬리 자루가 가늘고 머리가 작으며, 몸빛은 노랑 바탕에 다섯 줄의 검은색 세로띠가 있다. 이름은 이 물고기를 잘 낚았다는 관북 지방의 사람의 이름에서 유래하였다. 한해성 어종으로 한국과 일본에 분포한다.</P>
+                    </div>
+                  </section>
+
+              </div>
+              <div class="col-4 col-12-medium">
+
+                <!-- Box -->
+                  <section class="box feature" id="weather">
+                    <a href="#" class="image featured"><img src="{% static 'images/용가자미.jpg' %}" alt="" /></a>
+                    <div class="inner">
+                      <header>
+                        <h2>용가자미</h2>
+                      </header>
+                      <p>몸은 긴 타원형이며, 눈은 오른쪽에 위치한다. 윗쪽의 눈은 등 외곽의 정중선 위에 위치하며, 위쪽을 향해 있다. 입은 크고 거의 좌우대칭이며, 아래턱이 위턱보다 돌출한다. 위턱의뒤끝은아래쪽눈동자의중앙아래까지도달한다. 양 턱에 작지만 뾰족한 이빨이 각각 1줄씩 있다. 등지느러미의 기부는 윗눈의 후반부에서 시작한다. 가슴지느러미의중간에있는연조는끝부분이갈라져있다. 옆줄은 가슴지느러미 위쪽에서 구부러지지 않고 거의 직선형이다. 비늘은 작고 눈이 있는 쪽은 빗비늘 또는 둥근비늘이며, 눈이 없는 쪽은 빗비늘이다.</p>
+                    </div>
+                  </section>
+
+              </div>
+              <div class="col-4 col-12-medium">
+
+                <!-- Box -->
+                  <section class="box feature" id="weather">
+                    <a href="#" class="image featured"><img src="{% static 'images/황어.jpg' %}" alt="" /></a>
+                    <div class="inner">
+                      <header>
+                        <h2>황어</h2>
+                      </header>
+                      <p>잉어목 잉어과의 물고기로 잉어과 어종 중에서 유일한 2차 담수어인데, 강에서 태어난 뒤 바다에서 일생을 보내다가 연어처럼 강으로 돌아와서 산란을 한다.
+
+잡식성으로, 수온이 낮을 때는 강바닥의 수생곤충 등을 먹고살다가 수온이 올라가면 육지에서 흘러온 지렁이등을 먹는다고 한다.
+
+몸은 길게 옆으로 납작하고, 성어가 되면 3열의 굵은 황금색 줄이 선명하게 드러난다. 길이는 성어 기준으로 평균 40cm 내외로 큰편이다. 친척인 잉어가 그렇듯 소화기관은 위가 없고 창자만 있다.
+</p>
+                    </div>
+                  </section>
+
+              </div>
+        			<!-- {% for post in posts %}
+              {% if forloop.counter <= 3 %}
+							<div class="col-4 col-12-medium">
+
+									<section class="box feature" id="weather">
+										<div class="inner">
+											<header>
+												<h2>{{ post.species }}</h2>
+											</header>
+											<p>{{ post.description }}</p>
+
+										</div>
+									</section>
+
+							</div>
+              {% endif %}
+              {% endfor %} -->
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-12" style="text-align:center;">
+								<button>More..</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<footer id="footer" class="container">
+						<div class="row">
+
+							<div class="col-12 col-12-medium col-12-small" >
+
+								<!-- Contact -->
+									<section class="widget contact last" style="text-align: center;">
+										<h3>Contact Us</h3>
+										<ul>
+											<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+
+										</ul>
+										<p>경기도 용인시 기흥구 영덕동 덕영대로 1732<br />
+										010-xxxx-yyyy</p>
+									</section>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div id="copyright">
+									<ul class="menu">
+										<li>&copy;  All rights reserved</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+
+        	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ae75e773f5e261bc9bb0d38c630165d8&libraries=services,clusterer"></script>
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.dropotron.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+
+	</body>
+</html>

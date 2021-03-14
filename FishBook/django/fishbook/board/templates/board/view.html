@@ -1,0 +1,161 @@
+{% load static %}
+{% load mathfilters %}
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>FishBook</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="JH PARK" />
+
+        <link rel="shortcut icon" href="">
+
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+    </head>
+
+	<body class="is-preload homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<header id="header" class="container">
+
+						<!-- Logo -->
+							<div id="logo">
+								<a href="{% url 'index' %}"><img src="{% static 'images/fish-logo.png' %}" %} style="height: 66px;"></a>
+
+							</div>
+
+						<!-- Nav -->
+							{% include 'share/_navbar.html' %}
+
+					</header>
+				</div>
+
+			<!-- Banner -->
+			<!--
+				<div id="banner-wrapper">
+					<div id="banner" class="box container">
+						<div class="row">
+							<div class="col-7 col-12-medium">
+								<h2>Fish Book</h2>
+								<p> 낚시 관련 모든 정보를 제공합니다.</p>
+							</div>
+							<div class="col-5 col-12-medium">
+								<ul>
+									<li><a href="#transport" class="button large icon solid fa-arrow-circle-right">Transport</a></li>
+									<li><a href="#weather" class="button alt large icon solid fa-arrow-circle-right">Weather</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+-->
+			<!-- Features -->
+
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<H3>조황문의</H3>
+						</div>
+					</div>
+				</div>
+			<!-- Main -->
+				<div id="banner-wrapper">
+					<div class="container">
+
+								<!-- Box -->
+									<section class="box feature" id="transport">
+                    <div id="board" class="board-form">
+                    	<table class="tbl-ex">
+                    		<tr>
+                    			<th colspan="2">글보기</th>
+                    		</tr>
+                    		<tr>
+                    			<td class="label">제목</td>
+                    			<td>{{board.title}}</td>
+                    		</tr>
+                    		<tr>
+                    			<td class="label">글쓴이</td>
+                    			<td>{{board.user.name}}</td>
+                    		</tr>
+                    		<tr>
+                    			<td class="label">조회수</td>
+                    			<td>{{board.hit}}</td>
+                    		</tr>
+                    		<tr>
+                    			<td class="label">내용</td>
+                    			<td>
+                    				<div class="view-content">
+                    					{{board.content|linebreaks}}
+                    				</div>
+                          	<div class="bottom">
+                          		<button style="float: right;" onclick="window.location.href='{% url 'board:list' page %}?kwd={{kwd}}'">글목록</button>
+                          		{% if request.session.authUser is not None %}
+                          		<!--<a href="/board/writeform/{{board.id}}">답글</a>-->
+                          	  <button style="float: right;" onclick="window.location.href='{% url 'board:reply_writeform' board.id page %}?kwd={{kwd}}'">답글</button>
+                              	{% if request.session.authUser.email == board.user.email %}
+                                  <button style="float: right;" onclick="window.location.href='{% url 'board:modifyform' board.id page %}'">글수정</button>
+                                  <button style="float: right;" onclick="window.location.href='{% url 'board:delete' board.id page %}?kwd={{kwd}}'">글삭제</button>
+                          			{% endif %}
+                          		{% endif %}
+                          	</div>
+                    			</td>
+                    		</tr>
+                    	</table>
+                    </div>
+									</section>
+					</div>
+				</div>
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<footer id="footer" class="container">
+						<div class="row">
+
+							<div class="col-12 col-12-medium col-12-small" >
+
+								<!-- Contact -->
+									<section class="widget contact last" style="text-align: center;">
+										<h3>Contact Us</h3>
+										<ul>
+											<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+											<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+
+										</ul>
+										<p>경기도 용인시 기흥구 영덕동 덕영대로 1732<br />
+										010-xxxx-yyyy</p>
+									</section>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div id="copyright">
+									<ul class="menu">
+										<li>&copy;  All rights reserved</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+
+        	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ae75e773f5e261bc9bb0d38c630165d8&libraries=services,clusterer"></script>
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.dropotron.min.js' %}"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+	</body>
+</html>
